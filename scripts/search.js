@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
+    const searchToggle = document.getElementById('search-toggle');
+    const searchContainer = document.querySelector('.search-container');
     
+    if (searchToggle) {
+        searchToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            searchContainer.classList.toggle('show');
+            if (searchContainer.classList.contains('show')) {
+                searchInput.focus();
+            }
+        });
+    }
+
     function performSearch() {
         const searchTerm = searchInput.value.toLowerCase();
         const cards = document.querySelectorAll('.card');
@@ -41,6 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             searchInput.value = '';
             performSearch();
+            searchContainer.classList.remove('show');
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
+            searchContainer.classList.remove('show');
         }
     });
 });

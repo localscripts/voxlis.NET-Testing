@@ -43,7 +43,6 @@
         };
     </script>
 </head>
-
 <body>
     <canvas id="particle-container" style="z-index: 0;"></canvas>
 
@@ -51,60 +50,60 @@
         <div id="nav-container">
             <div class="nav-left">
                 <p id="brand">www.<span id="brand-highlight">voxlis</span>.NET</p>
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search exploits...">
-                    <div class="search-icon">🔍</div>
+                <div class="nav-buttons">
+                    <button type="button" aria-label="Search" id="search-toggle" class="unselectable">
+                        🔍
+                    </button>
+                    <button type="button" aria-label="Mobile menu" id="menu-icon" class="unselectable">
+                        <img class="unselectable" src="assets/menu.svg" alt="" width="30" height="30">
+                    </button>
                 </div>
             </div>
             <div id="nav-items">
-                <button type="button" aria-label="Mobile menu" id="menu-icon" class="unselectable">
-                    <img class="unselectable" src="assets/menu.svg" alt="" width="30" height="30">
-                </button>
                 <ul id="menu-list" class="unselectable">
                     <li><a class="unselectable" href="/">Home</a></li>
                     <li><a class="unselectable" href="/discord">Discord</a></li>
                     <li><a class="unselectable" href="https://github.com/localscripts/localscripts.github.io/blob/main/scripts/index.json">Contribute</a></li>
                 </ul>
             </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search exploits...">
+            </div>
         </div>
     </nav>
 
-<div id="popup-notification">
-    <div class="popup-content">
-<h2>
-  <a href="https://blox.game/free" class="glow-red" target="_blank" style="text-decoration: none;">
-    🔥 Check out BloxGame! 🔥
-  </a>
-</h2>
-<p>
-  <a href="https://blox.game/free" target="_blank" style="text-decoration: none;">
-    💵 Coupon code "FREE" to start! 💵
-  </a>
-</p>
-
-        <a href="https://blox.game/free" target="_blank">
-            <img src="/assets/bloxgame-banner.jpg" alt="BloxGame/free" class="popup-image">
-        </a>
-        <button onclick="document.getElementById('popup-notification').style.visibility = 'hidden'; document.getElementById('popup-notification').style.opacity = '0';">Close</button>
+    <div id="popup-notification">
+        <div class="popup-content">
+            <h2>
+                <a href="https://blox.game/free" class="glow-red" target="_blank" style="text-decoration: none;">
+                    🔥 Check out BloxGame! 🔥
+                </a>
+            </h2>
+            <p>
+                <a href="https://blox.game/free" target="_blank" style="text-decoration: none;">
+                    💵 Coupon code "FREE" to start! 💵
+                </a>
+            </p>
+            <a href="https://blox.game/free" target="_blank">
+                <img src="/assets/bloxgame-banner.jpg" alt="BloxGame/free" class="popup-image">
+            </a>
+            <button onclick="document.getElementById('popup-notification').style.visibility = 'hidden'; document.getElementById('popup-notification').style.opacity = '0';">Close</button>
+        </div>
     </div>
-</div>
 
+    <main>
+        <div id="notification">
+            <h2>
+                <span class="glow-red">Installing exploits on Android & PC</span>
+            </h2>
+            <p>
+                <div class="notification-link">
+                    ➡️ <a href="https://youtu.be/Zj2ug30UmnU&index=1" target="_blank" rel="noopener noreferrer">Click here to watch the YouTube tutorial!</a>
+                </div>
+            </p>
+        </div>
+    </main>
 
-<main>
-    <div id="notification">
-        <h2>
-            <span class="glow-red">Installing exploits on Android & PC</span>
-        </h2>
-        <p>
-            <div class="notification-link">
-                ➡️ <a href="https://youtu.be/Zj2ug30UmnU&index=1" target="_blank" rel="noopener noreferrer">Click here to watch the YouTube tutorial!</a>
-            </div>
-        </p>
-    </div>
-</main>
-
-
-    
     <div>
         <div id="cards-wrapper">
             <div id="cards-align">
@@ -123,5 +122,4 @@
         </div>
     </footer>
 </body>
-
 </html>
