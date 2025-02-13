@@ -1,7 +1,14 @@
-const protectedLinks = false 
+const currentDate = new Date();
+const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 5 = Friday, 6 = Saturday
 
+let protectedLinks = false;
 
+// Check if today is Friday (5) through Sunday (0) and set protectedLinks to true
+if (currentDay >= 6 || currentDay === 0) {
+    protectedLinks = true;
+}
 
+console.log(protectedLinks); // true if Friday to Sunday, false otherwise
 
 const typeList = {
     "windows": "Windows",
@@ -144,6 +151,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     cardElement.innerHTML = html;
                     wrapper.appendChild(cardElement);
 
+                    const buttons = cardElement.querySelectorAll('.card-button');
+                    buttons.forEach(button => {
+                        button.innerHTML = button.innerHTML.replace(/\b(weekly|monthly)\b/gi, (match) => {
+                            // Check if the button has any color classes (pros, cons, neutral) and apply the appropriate color class
+                            let colorClass = '';
+                    
+                            if (button.classList.contains('pros')) {
+                                colorClass = 'pros-small-text-card';
+                            } else if (button.classList.contains('cons')) {
+                                colorClass = 'cons-small-text-card';
+                            } else if (button.classList.contains('neutral')) {
+                                colorClass = 'neutral-small-text-card';
+                            }
+                    
+                            return `<span class="small-text-card ${colorClass}">${match}</span>`;
+                        });
+                    });
+                    
+                    
+
                     const buyButton = cardElement.querySelector('.card-button.right.buylink');
                     if (buyButton && card.glow && !isExpired) {
                         buyButton.style.boxShadow = `0 0 10px ${card.glow}, 0 0 15px ${card.glow}, 0 0 5px ${card.glow}`;
@@ -164,24 +191,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     if (card.warning) {
-                            const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
-                            const buttons = cardElement.querySelectorAll('.card-button');
-                        
-                            buttons.forEach(button => {
-                                button.addEventListener('click', (e) => {
-                                    e.preventDefault();
-                                    if (confirm(warningText)) {
-                                        const url = button.getAttribute('href');
-                                        if (url) {
-                                            window.open(url, '_blank');
-                                        }
+                        const warningText = card.warningText || "⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️"
+                        const buttons = cardElement.querySelectorAll('.card-button');
+
+                        buttons.forEach(button => {
+                            button.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                if (confirm(warningText)) {
+                                    const url = button.getAttribute('href');
+                                    if (url) {
+                                        window.open(url, '_blank');
                                     }
-                                });
+                                }
                             });
-                        }
-                    });
-                }
-            })
+                        });
+                    }
+                });
+            }
+        })
         .catch(err => {
             if (wrapper) {
                 wrapper.innerHTML = `

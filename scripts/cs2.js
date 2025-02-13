@@ -26,12 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("scripts/cs2.json")
         .then(res => res.json())
         .then(cards => {
-            wrapper.innerHTML = ''; 
+            wrapper.innerHTML = ''; // Clear any existing cards
 
             cards.forEach(card => {
                 const cardElement = document.createElement('div');
                 cardElement.classList.add('card');
 
+                // Map types and generate icons
                 const types = card.types.map(type => ` 
                     <div class="type-holder">
                         <img class="unselectable card-type" src="./assets/${type}.png" alt="">
@@ -39,16 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `).join('');
 
+                // Generate HTML for pros, cons, and neutral sections
                 const pros = card.pros.map(pro => `<li>${pro}</li>`).join('');
                 const neutral = card.neutral.map(item => `<li>${item}</li>`).join('');
                 const cons = card.cons.map(con => `<li>${con}</li>`).join('');
 
+                // Define button text or default
                 const buttonText = card.buttonText || 'View';
 
+                // Handle additional Buy Now button if `buylink` and `buytext` are present
                 const buyLink = card.buylink ? ` 
                     <a href="${card.buylink}" class="card-button right" target="_blank" rel="noopener noreferrer">${card.buytext || 'Buy Now'}</a>
                 ` : '';
 
+                // Last edited by section
                 const lastEditedBy = card.lastEditedBy ? ` 
                     <div class="last-edited">
                         <p>Last edited by <span class="editor-name">${card.lastEditedBy}</span></p>
@@ -87,13 +92,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 cardElement.innerHTML = html;
                 wrapper.appendChild(cardElement);
 
+                // Add warning popup for button if "warning" is true
                 if (card.warning) {
                     const viewButton = cardElement.querySelector('.card-button.left');
                     viewButton.addEventListener('click', (e) => {
-                        e.preventDefault(); 
+                        e.preventDefault(); // Prevent default redirection
 
                         if (confirm("⚠️ **DANGER**: THIS EXPLOIT IS **UNVERIFIED** BY voxlis.NET. INSTALLING SOFTWARE FROM THIS SOURCE IS HIGHLY **RISKY** AND MAY INFECT YOUR DEVICE WITH **MALWARE OR VIRUSES**. PROCEED AT YOUR OWN RISK. ⚠️")) {
-                            window.open(card.link, '_blank'); 
+                            window.open(card.link, '_blank'); // Open link if confirmed
                         }
                     });
                 }

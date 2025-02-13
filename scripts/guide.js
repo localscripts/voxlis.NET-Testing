@@ -1,21 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Load Blog Posts from JSON
     const loadBlogPosts = () => {
-        return fetch('scripts/guide.json') 
+        return fetch('scripts/guide.json') // Adjust the path if necessary
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
-                return response.text(); 
+                return response.text(); // Get the response as text first
             })
             .then(text => {
                 if (text.trim() === '') {
                     throw new Error('Received empty response from JSON.');
                 }
-                return JSON.parse(text); 
+                return JSON.parse(text); // Parse the text as JSON
             })
             .then(posts => {
                 const blogPostsWrapper = document.getElementById('blog-posts-wrapper');
-                blogPostsWrapper.innerHTML = ''; 
+                blogPostsWrapper.innerHTML = ''; // Clear existing posts
 
                 posts.forEach(post => {
                     const postElement = document.createElement('div');
@@ -35,26 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
+    // Load blog posts after the page content is loaded
     loadBlogPosts();
 
+    // Navbar functionality (Hamburger menu toggle)
     const mi = document.getElementById("menu-icon");
     const ml = document.getElementById("menu-list");
 
     if (mi && ml) {
+        // Clone the menu list and add a blurred version for mobile view
         let mb = ml.cloneNode(true);
         mb.removeAttribute('id');
         mb.classList = "";
         mb.classList.add("menu-blur");
         ml.parentNode.parentNode.after(mb);
 
+        // Toggle the menu on hamburger click
         mi.addEventListener("click", function () {
             mi.classList.toggle("opened");
             mb.classList.toggle("show");
         });
     }
 
+    // Canvas particle effect for December (snowflake effect)
     const canvas = document.getElementById('particle-container');
-    if (new Date().getMonth() === 10) { 
+    if (new Date().getMonth() === 10) { // 11 = December
         const ctx = canvas.getContext('2d');
 
         function resizeCanvas() {

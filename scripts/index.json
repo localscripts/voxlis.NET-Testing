@@ -13,8 +13,7 @@
         "lastEditedByImage": "assets/verified.png",
         "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f0",
         "buytext": "$7.49 weekly",
-        "glow": "#06A3F1",
-        "expires": "2025-02-01T23:59:59Z"
+        "glow": "#06A3F1"
     },
     {
         "name": "Nihon",
@@ -31,7 +30,8 @@
         "warning": false,
         "warningText": "Coupon 'voxlis' for 5% off!",
         "buylink": "https://nihon.bloxproducts.com",
-        "buytext": "$6.49 weekly"
+        "buytext": "$6.49 weekly",
+        "hide": true
     },
     {
         "name": "Seliware",
@@ -39,7 +39,7 @@
         "neutral": [],
         "cons": [],
         "link": "https://discord.gg/7JgvV3CufN",
-        "linkprotected": "https://lootdest.org/s?5d027a2b",
+        "linkprotected": "https://lootdest.org/s?mklFBYk3",
         "buttonText": "Discord",
         "types": ["unc", "windows"],
         "unc": "/assets/unc/seliware.json",
@@ -141,6 +141,20 @@
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png"
      },
+      {
+        "name": "Velocity",
+        "pros": ["Has a decompiler", "98% UNC [98% UNC]", "Level 8"],
+        "neutral": ["New exploit- Safety is unknown"],
+        "cons": [],
+        "link": "https://discord.gg/79Cv7rQU8x",
+        "linkprotected": "https://lootdest.org/s?TRFUTJf5",
+        "buttonText": "FREE",
+        "types": ["unc", "windows"],
+        "unc": "http://voxlis.net/assets/unc/Velocity.json",
+        "lastEditedBy": "voxlis.NET",
+        "lastEditedByImage": "assets/verified.png",
+        "warning": true
+    },
     {
         "name": "Solara v3",
         "pros": ["Has a decompiler","51% sUNC [66% UNC]"],
@@ -157,7 +171,7 @@
         "name": "Xeno",
         "pros": ["Has a decompiler", "41% sUNC [81% UNC]"],
         "neutral": ["Level 3","Not stable"],
-        "cons": [],
+        "cons": ["Currently has vulnerabilities"],
         "link": "https://xeno.now",
         "linkprotected": "https://lootdest.org/s?6ND7jl03",
         "buttonText": "FREE",
@@ -264,7 +278,8 @@
         "types": ["unc", "android", "key"],
         "lastEditedBy": "voxlis.NET",
         "lastEditedByImage": "assets/verified.png",
-        "warning": true
+        "warning": true,
+        "hide": true
     },
     {
         "name": "Aimmy",
@@ -326,7 +341,8 @@
         "types": ["windows"],
         "lastEditedBy": "Requested",
         "lastEditedByImage": "assets/unverified.png",
-        "warning": true
+        "warning": true,
+        "hide": true
     },
     {
         "name": "Mint",
@@ -353,5 +369,17 @@
         "lastEditedBy": "Mr. Ratter",
         "lastEditedByImage": "assets/unverified.png",
         "warning": true
+    },
+    {
+        "name": "Matcha",
+        "pros": ["External", "Driver based", "Decompiler + Explorer"],
+        "neutral": [],
+        "cons": ["Safety is not verified by voxlis.NET", "Not verified by voxlis.NET"],
+        "link": "https://discord.gg/matchalol",
+        "buylink": "https://bloxproducts.com/?affiliate_key=1270744029168009258#f3",
+        "buytext": "$9.99 lifetime",
+        "types": ["windows"],
+        "lastEditedBy": "sk337",
+        "lastEditedByImage": "assets/unverifed.png"
     }
 ]
